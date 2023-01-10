@@ -6,23 +6,24 @@
 	<title> Ongoing Season of Fortnite </title>
 
 	<link rel = "icon" 
-	href = "https://github.com/thatNitinVinayak/Fortnite-Ongoing-Season/blob/main/C4S1_F.jpg?raw=true">
+	href = "icon link">
 	
 	<style> 
 
 		body 
 		{
+			background-color: black;
 			background-image : 
-				url('https://github.com/thatNitinVinayak/Fortnite-Ongoing-Season/blob/main/C4S1_BG.png?raw=true');
+				url('bg image');
 			background-repeat : no-repeat;
 			background-attachment : fixed;
 			background-size : 100% 100%;
 		} 
 		
-		#heading { text-align : center; font-family : "Burbank Big"; color : whitesmoke /*#0a054e*/; font-size : 77px; }
-		#bigfnt { text-align : center; font-family : "Burbank Big"; color : whitesmoke /*#0a054e*/; font-size : 40px; }	
-		#smallfnt { font-family : "Burbank Big"; color : whitesmoke /*#0a054e*/; text-align : center; font-size : 30px; }
-		#timer { font-family : "Burbank Big"; color : whitesmoke /*#0a054e*/; text-align : center; font-size : 30px; }
+		#heading { text-align : center; font-family : "Helvetica Neueu"; color : whitesmoke /*#0a054e*/; font-size : 50px; }
+		#bigfnt { text-align : center; font-family : "Helvetica Neueu"; color : whitesmoke /*#0a054e*/; font-size : 40px; }	
+		#smallfnt { font-family : "Helvetica Neueu"; color : whitesmoke /*#0a054e*/; text-align : center; font-size : 30px; }
+		#timer { font-family : "Helvetica Neueu"; color : whitesmoke /*#0a054e*/; text-align : center; font-size : 30px; }
 
 	</style>
 	
@@ -30,40 +31,17 @@
 
 <body>
 
-	<h1 id = "heading"> FORTNITE </h1>
+	<h1 id = "heading"> INVENTORY MANAGEMENT SYSTEM </h1>
 
 	<nav id = "bigfnt"> 
-		<a href = "https://www.epicgames.com/fortnite/en-US/home" target = "_blank"> 
+		<a href = "display result link" target = "_blank"> 
 		<img style="border:10px outset #393D47/*#0a054e*/;" 
-		     src = "https://github.com/thatNitinVinayak/Fortnite-Ongoing-Season/blob/main/C4S1_KeyArt.jpg?raw=true"; 
+		     src = "image with link"; 
 		alt = "" align = "centre" width = 550 height = 309> </a> </nav>
 	
-	<p id = "bigfnt"> CHAPTER 4 SEASON 1 : A NEW BEGINNING </p>
-	<P id = "smallfnt"> 4 DECEMBER 2022 - 10 MARCH 2023 </p>
-
-   <p id = "timer"></p>
-
-<script>
-
-var timerDate = new Date("Mar 10 2023 00:00:00").getTime();
-var x = setInterval(function() 
-{
-  var now = new Date().getTime();
-  var distance = timerDate - now;
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  document.getElementById("timer").innerHTML = "CHAPTER 4 SEASON 1 ENDS IN : " 
-		+ days + "D " + hours + "H " + minutes + "M " + seconds + "S";
-  if (distance < 0) 
-  {
-    clearInterval(x);
-    document.getElementById("timer").innerHTML = "CHAPTER 4 SEASON 2 IS YET TO BEGIN";
-  }
-}, 1000);
-
-</script>
+	<P id = "smallfnt"> We deliver an Inventory Management System for Shops using IoT. 
+		And offer product recommendations to the shopkeepers using Machine Learning. 
+		This is a collaboration of the Iot and Machine Learning Model to deliver products at ease. </p>
 
 </body>
 

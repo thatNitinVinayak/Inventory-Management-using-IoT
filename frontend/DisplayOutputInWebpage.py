@@ -12,10 +12,3 @@ def index():
     
 if __name__ == '__main__':
     app.run(debug = True)
-   
-    
-
-# include the below code in the machine learning model    
-    
-# import pickle
-# pickle.dump(popular_df,open('recommendation.pkl','wb'))

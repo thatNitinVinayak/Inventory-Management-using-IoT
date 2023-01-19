@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> Inventory Management Database </title>
 
-        <style>
-            body
-            {
-                background-image : 
-                    url('https://github.com/thatNitinVinayak/Fortnite-Ongoing-Season/blob/main/SelectGameMode_BG.jpg?raw=true');
-                background-repeat : no-repeat;
-                background-attachment : fixed;
-                background-size : 100% 100%;
-            }
+<head>
 
-            #heading { text-align : center; font-family : "Burbank Big"; color : #0a054e; }
-        </style>
+    <title> Inventory Management Database </title>
+    <link rel = "icon" 
+        href = "https://github.com/thatNitinVinayak/Inventory-Management-using-IoT/blob/main/frontend/images/Inventory_icon.png?raw=true">
 
-        <script src = "https://www.gstatic.com/firebasejs/5.5.1/firebase.js/"> </script>
-    </head>
+    <style>
 
-    <body>
-        <h1 id = heading> INVENTORY MANAGEMENT DATABASE </h1>
-        <script>
+        body
+        {
+            background-image : 
+                url('https://github.com/thatNitinVinayak/Inventory-Management-using-IoT/blob/main/frontend/images/fn_ch2_bg.jpg?raw=true');
+            background-repeat : no-repeat;
+            background-attachment : fixed;
+            background-size : 100% 100%;
+        }
 
-            import { initializeApp } from "firebase/app";
-            import { getAnalytics } from "firebase/analytics";
+        #heading { text-align : center; font-family : "Burbank Big"; color : #0a054e; }
 
-            const firebaseConfig = {
-            apiKey: "AIzaSyDRRwu-wm2FCyHDG05NI9RmdjTUWIOF1YE",
-            authDomain: "iotinventory-bfab3.firebaseapp.com",
-            databaseURL: "https://iotinventory-bfab3-default-rtdb.firebaseio.com",
-            projectId: "iotinventory-bfab3",
-            storageBucket: "iotinventory-bfab3.appspot.com",
-            messagingSenderId: "949752158766",
-            appId: "1:949752158766:web:eb7471b41353c2ac475dbf",
-            measurementId: "G-WQNQC3E75X"
-            };
+    </style>
 
-            const app = initializeApp(firebaseConfig);
-            const analytics = getAnalytics(app);
+    <script src = "https://www.gstatic.com/firebasejs/5.5.1/firebase.js/"> </script>
 
-        </script>
-    </body>
+</head>
+
+<body>
+
+    <h1 id = heading> INVENTORY MANAGEMENT DATABASE </h1>
+    <script>
+
+        import { initializeApp } from "firebase/app";
+        import { getAnalytics } from "firebase/analytics";
+
+        const firebaseConfig = {
+        apiKey: "AIzaSyDRRwu-wm2FCyHDG05NI9RmdjTUWIOF1YE",
+        authDomain: "iotinventory-bfab3.firebaseapp.com",
+        databaseURL: "https://iotinventory-bfab3-default-rtdb.firebaseio.com",
+        projectId: "iotinventory-bfab3",
+        storageBucket: "iotinventory-bfab3.appspot.com",
+        messagingSenderId: "949752158766",
+        appId: "1:949752158766:web:eb7471b41353c2ac475dbf",
+        measurementId: "G-WQNQC3E75X"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+    </script>
+
+</body>
+
 </html>

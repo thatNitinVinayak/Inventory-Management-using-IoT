@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title> Inventory Management Database </title>
+    <link rel = "icon" 
+        href = "https://github.com/thatNitinVinayak/Inventory-Management-using-IoT/blob/main/frontend/images/Inventory_icon.png?raw=true">
+
+    <style>
+
+        body
+        {
+            background-image : 
+                url('https://github.com/thatNitinVinayak/Inventory-Management-using-IoT/blob/main/frontend/images/fn_ch2_bg.jpg?raw=true');
+            background-repeat : no-repeat;
+            background-attachment : fixed;
+            background-size : 100% 100%;
+        }
+
+        #heading { text-align : center; font-family : "Burbank Big"; color : #0a054e; font-size : 50px;}
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1 id = heading> INVENTORY MANAGEMENT DATABASE </h1>
+
+    <table>
+
+      <thead>
+        <th> SNo </th>
+        <th> Brand </th>
+        <th> Category </th>
+        <th> Name </th>
+        <th> Price </th>
+        <th> Product </th>
+        <th> Product ID </th>
+        <th> Quantity Ordered </th>
+      </thead>
+
+      <tbody id = "tbody1">
+
+      </tbody>
+
+    </table>
+
+    <script src = "https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"> </script>
+    <script src = "https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"> </script>
+    <script src = "https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"> </script>
+
+    <script type = "module" id = "MainScript">
+
+      /* Configuring & Initializing Firebase*/
+
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDRRwu-wm2FCyHDG05NI9RmdjTUWIOF1YE",
+        authDomain: "iotinventory-bfab3.firebaseapp.com",
+        databaseURL: "https://iotinventory-bfab3-default-rtdb.firebaseio.com",
+        projectId: "iotinventory-bfab3",
+        storageBucket: "iotinventory-bfab3.appspot.com",
+        messagingSenderId: "949752158766",
+        appId: "1:949752158766:web:dff1ca93aa50773f475dbf",
+        measurementId: "G-W314H507XF"
+      };
+    
+      // firebase.initializeApp(firebaseConfig);
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+
+      /* Configuring & Initializing Firebase */
+
+      /* Get All Data */
+
+      function SelectAllData() {
+        firebase.database().ref('IoT-inventory').on('value',
+        function(AllRecords) {
+          AllRecords.forEach (
+            function(CurrentRecord) {
+              var brand = CurrentRecord.val().Brand;
+              var category = CurrentRecord.val().Category;
+              var name = CurrentRecord.val().Name;
+              var price = CurrentRecord.val().PriceEach;
+              var product = CurrentRecord.val().Product;
+              var product_id = CurrentRecord.val().ProductID;
+              var quantity = CurrentRecord.val().QuantityOrdered;
+              AddItemsToTable(brand, category, name, price, product, product_id, quantity);
+            }
+          );
+        });
+      }
+      windown.onload = SelectAllData;
+
+      /* Get All Data */
+
+      /* Filling the Table */
+
+      var stdNo = 0;
+      function AddItemsToTable(brand, category, name, price, product, product_id, quantity) {
+        var tbody = document.getElementById('tbody1');
+        var trow = document.createElement('tr');
+        var td1 = document.createElement('td');
+        var td2 = document.createElement('td');
+        var td3 = document.createElement('td');
+        var td4 = document.createElement('td');
+        var td5 = document.createElement('td');
+        var td6 = document.createElement('td');
+        var td7 = document.createElement('td');
+        var td8 = document.createElement('td');
+
+        td1.innerHTML = ++stdNo;
+        td2.innerHTML = brand;
+        td3.innerHTML = category;
+        td4.innerHTML = name;
+        td5.innerHTML = price;
+        td6.innerHTML = product;
+        td7.innerHTML = product_id;
+        td8.innerHTML = quantity;
+
+        trow.appendChild(td1);
+        trow.appendChild(td2);
+        trow.appendChild(td3);
+        trow.appendChild(td4);
+        trow.appendChild(td5);
+        trow.appendChild(td6);
+        trow.appendChild(td7);
+        trow.appendChild(td8);
+        tbody.appendChild(trow);
+      }
+
+      /* Filling the Table */
+
+    </script>
+
+</body>
+
+</html>
+
+<!--
+
+FIREBASE CONFIG:
+
+  <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDRRwu-wm2FCyHDG05NI9RmdjTUWIOF1YE",
+      authDomain: "iotinventory-bfab3.firebaseapp.com",
+      databaseURL: "https://iotinventory-bfab3-default-rtdb.firebaseio.com",
+      projectId: "iotinventory-bfab3",
+      storageBucket: "iotinventory-bfab3.appspot.com",
+      messagingSenderId: "949752158766",
+      appId: "1:949752158766:web:dff1ca93aa50773f475dbf",
+      measurementId: "G-W314H507XF"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    
+  </script>
+
+-->

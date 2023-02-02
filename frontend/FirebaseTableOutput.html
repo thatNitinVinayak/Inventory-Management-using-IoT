@@ -54,13 +54,11 @@
     </table>
     </div>
 
-    <script src = "https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"> </script>
-    <script src = "https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"> </script>
-    <script src = "https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"> </script>
-
     <script type = "module" id = "MainScript">
 
       /* Configuring & Initializing Firebase*/
+      import { initializeApp } from 'firebase/app';
+      import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 
       const firebaseConfig = {
         apiKey: "AIzaSyDRRwu-wm2FCyHDG05NI9RmdjTUWIOF1YE",
@@ -73,8 +71,8 @@
         measurementId: "G-W314H507XF"
       };
     
-      firebase.initializeApp(firebaseConfig);
-      //const app = initializeApp(firebaseConfig);
+      //firebase.initializeApp(firebaseConfig);
+      const app = initializeApp(firebaseConfig);
       //const analytics = getAnalytics(app);
       //const db = getFirestore(app);
 
@@ -105,40 +103,33 @@
 
       /* Filling the Table */
 
-      var stdNo = 0;
-      function AddItemsToTable(brand, category, name, product) {
-        var tbody = document.getElementById('tbody1');
-        var trow = document.createElement('tr');
-        var td1 = document.createElement('td');
-        var td2 = document.createElement('td');
-        var td3 = document.createElement('td');
-        var td4 = document.createElement('td');
-        //var td5 = document.createElement('td');
-        var td6 = document.createElement('td');
-        //var td7 = document.createElement('td');
-        //var td8 = document.createElement('td');
+      var itemsRef = firebase.database().ref().child("Items");
+      var tableBody = document.querySelector('#table tbody');
 
-        td1.innerHTML = ++stdNo;
-        td2.innerHTML = brand;
-        td3.innerHTML = category;
-        td4.innerHTML = name;
-        //td5.innerHTML = price;
-        td6.innerHTML = product;
-        //td7.innerHTML = product_id;
-        //td8.innerHTML = quantity;
-
-        trow.appendChild(td1);
-        trow.appendChild(td2);
-        trow.appendChild(td3);
-        trow.appendChild(td4);
-        //trow.appendChild(td5);
-        trow.appendChild(td6);
-        //trow.appendChild(td7);
-        //trow.appendChild(td8);
-        tbody.appendChild(trow);
+      function readData() {
+          itemsRef.once('value', function (snapshot) {
+              snapshot.forEach(function (item_snapshot) {
+                  //Create html elements, TRs, TD,s etc.
+                  var row = document.createElement("tr");
+                  var col1 = document.createElement("td");
+                  var col2 = document.createElement("td");
+                  var col3 = document.createElement("td");
+                  var col4 = document.createElement("td");
+                  //Add data to the new elements.
+                  col1.innerText = item_snapshot.key;
+                  col2.innerText = item_snapshot.child("First column").val();
+                  col3.innerText = item_snapshot.child("Second_column").val();
+                  col4.innerText = item_snapshot.child("Third_column").val();
+                  //Append the cells into the row and the row into the table body.
+                  row.appendChild(col1);
+                  row.appendChild(col2);
+                  row.appendChild(col3);
+                  row.appendChild(col4);
+                  tableBody.appendChild(row);
+              });
+          });
       }
 
-      /* Filling the Table */
 
     </script>
 

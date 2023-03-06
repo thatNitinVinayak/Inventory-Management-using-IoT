@@ -17,5 +17,5 @@ def showData():
     return render_template('show_csv_data.html', data = theData_html)
 '''
 
-if __name__=='__main__':
+if __name__ == '__main__':
     app.run(debug = True)

@@ -1,21 +1,30 @@
-from flask import Flask, render_template
 import pandas as pd
-import os
+from flask import Flask, render_template, request
+from flask_cors import CORS
+
+UPLOAD_FOLDER = 'D:/NI7IN/Inventory-Management-using-IoT/Product Recommendation System'
 
 app = Flask(__name__)
-target = os.path.join(app.static_folder, 'theProducts.csv')
-theData = pd.read_csv(target)
- 
-@app.route('/')
-def index():
+CORS(app)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+products_prob = pd.read_csv("theProducts.csv")
+
+def recommend(prod, n):
+    basket = prod
+    no_of_suggestions = n
+    all_of_basket = products_prob[basket]
+    all_of_basket = all_of_basket.sort_values(ascending=False)
+    productRecommendations_to_shopkeepers = list(all_of_basket.index[:no_of_suggestions])
+    print('You Might Consider Restocking : ', productRecommendations_to_shopkeepers)
+    output=[]
+    for i in productRecommendations_to_shopkeepers:
+        output.append(products_prob.loc[i,'Unnamed: 0'])
+    return (output)
+
+@app.route('/', methods = ["GET", "POST"])
+def home():
     return render_template('index.html')
- 
-'''
-@app.route('/show_data',  methods=("POST", "GET"))
-def showData():
-    theData_html = theData.to_html()
-    return render_template('show_csv_data.html', data = theData_html)
-'''
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug=True)

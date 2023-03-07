@@ -1,8 +1,8 @@
 import pandas as pd
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 from flask_cors import CORS
 
-UPLOAD_FOLDER = 'D:/NI7IN/Inventory-Management-using-IoT/Product Recommendation System'
+UPLOAD_FOLDER = 'D:/NI7IN/Inventory-Management-using-IoT/Product Recommendation System/uploads'
 
 app = Flask(__name__)
 CORS(app)

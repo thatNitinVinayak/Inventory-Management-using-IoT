@@ -1,15 +1,11 @@
 import pandas as pd
+import os
 from flask import Flask, render_template
 from flask_cors import CORS
 
-UPLOAD_FOLDER = 'D:/NI7IN/Inventory-Management-using-IoT/Product Recommendation System/uploads'
-
 app = Flask(__name__)
 CORS(app)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-products_prob = pd.read_csv("theProducts.csv")
-
+products_prob = pd.read_csv( os.path.join(app.root_path, "uploads","theProducts.csv"))
 def recommend(prod, n):
     basket = prod
     no_of_suggestions = n
